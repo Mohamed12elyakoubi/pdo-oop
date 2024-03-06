@@ -11,7 +11,7 @@ class Klant
     {
         global $mydb;
         $this->db = $mydb;
-    }
+    }                                                                                                                                                                                                                                   
     public function insertKlant($klantnaam, $email, $telefoonnummer)
     {
         $this->db->run("INSERT INTO $this->table (Klantnaam, email, telefoonnummer) VALUES (?, ?, ?)", [$klantnaam, $email, $telefoonnummer]);

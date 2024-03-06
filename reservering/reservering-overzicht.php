@@ -95,6 +95,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="Tafel" class="form-label">Tafel:</label>
                 <select class="form-select" name="Tafel" id="Tafel">
                     <?php
+                            $restaurant = new Restaurant();
+
                     $tafels = $restaurant->selectAll();
                     foreach ($tafels as $tafel) {
                         echo "<option value='" . $tafel['TafelId'] . "'>" . $tafel['tafel'] . "</option>";
@@ -108,6 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <select class="form-select" name="klantId" id="klantId">
                 <option value="" disabled selected>select een klant</option>
             <?php
+            $klant = new Klant();
             $klanten = $klant->selectAll();
             foreach ($klanten as $klant) {
                 echo "<option value='" . $klant['klantId'] . "'>" . $klant['klantnaam'] . " - " . $klant['email'] . " - 0" . $klant['telefoonnummer'] . "</option>";

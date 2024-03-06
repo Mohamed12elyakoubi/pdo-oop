@@ -4,13 +4,14 @@ include_once('./product.php');
 $productObj = new Product();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!empty($_POST['product']) && !empty($_POST['omschrijving']) && !empty($_POST['prijs'])) {
+    if (!empty($_POST['product']) && !empty($_POST['omschrijving']) && !empty($_POST['soort']) && !empty($_POST['prijs'])) {
         $productid = $_POST['productid'];
         $product = $_POST['product'];
         $omschrijving = $_POST['omschrijving'];
+        $soort = $_POST['soort'];
         $prijs = $_POST['prijs'];
         
-        $productObj->updateproduct($productid, $product, $omschrijving, $prijs);
+        $productObj->updateproduct($productid, $product, $omschrijving, $soort , $prijs);
         echo '<div class="alert alert-success" role="alert">Product is succesvol bijgewerkt</div>';
     } else {
         echo '<div class="alert alert-danger" role="alert">Alle velden zijn verplicht!</div>';
@@ -46,6 +47,16 @@ if(isset($_GET['productid'])) {
             <div class="mb-3">
                 <label for="omschrijving" class="form-label">omschrijving:</label>
                 <input type="text" id="omschrijving" name="omschrijving" class="form-control" value="<?php echo $productdata['omschrijving']; ?>" required>
+            </div>
+            <div class="mb-3">
+            <label for="soort" class="form-label">soort:</label>
+                <select class="form-select" name="soort" id="soort">
+                <option value="" disabled selected>Kies een soort uit :</option>
+                <option value="Drinken">Drinken</option>
+                <option value="Maaltijd">Maaltijd</option>
+                <option value="nagerecht">nagerecht</option>
+                </select>
+
             </div>
             <div class="mb-3">
                 <label for="prijs" class="form-label">prijs:</label>
