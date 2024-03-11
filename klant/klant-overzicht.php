@@ -1,5 +1,5 @@
 <?php
-include_once('./klant.php');
+include_once('klant.php');
 $klant = new Klant();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

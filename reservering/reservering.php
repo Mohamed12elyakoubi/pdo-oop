@@ -29,12 +29,13 @@ class Reservering
     {
         $this->db->delete($this->table, $this->primaryKey, $ReserveringID);
     }
-    public function updatereservering($ReserveringID, $Tafel, $klantId, $startreservering, $eindereservering)
-    {
-        $setValues = "Tafel = ?, klantId = ?, start-reservering,  = ?, start-reservering = ?";
-        $sql = "UPDATE $this->table SET $setValues WHERE $this->primaryKey = ?";
-        $this->db->run($sql, [$Tafel, $klantId, $startreservering, $eindereservering , $ReserveringID]);
-    }
+public function updatereservering($ReserveringID, $Tafel, $klantId, $startreservering, $eindereservering)
+{
+    $setValues = "Tafel = ?, klantId = ?, `start-reservering` = ?, `einde-reservering` = ?";
+    $sql = "UPDATE $this->table SET $setValues WHERE $this->primaryKey = ?";
+    $this->db->run($sql, [$Tafel, $klantId, $startreservering, $eindereservering, $ReserveringID]);
+}
+
     public function get_reservering_by_id($ReserveringID)
     {
         $sql = "SELECT r.*, k.klantnaam, k.email, k.telefoonnummer, t.tafel FROM $this->table r 
